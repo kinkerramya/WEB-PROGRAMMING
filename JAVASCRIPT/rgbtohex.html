@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+body{
+background-color:pink;
+}
+.ret{
+background-color:red;
+}
+</style>
+</head>
+<body>
+<h1>Change the RGB values to HEX values</h1>
+<br>
+<form>
+<b>Enter r value:</b><br>
+<input type="number" name="r" id="a" value="" min="0" max="256">
+<br>
+<b>Enter g value:</b><br>
+<input type="number" name="g" id="b" value="" min="0" max="256">
+<br>
+<b>Eenter b value:</b><br>
+<input type="number" name="b" id="t" value="" min="0" max="256">
+<br><br>
+<h1>Object creation mode:</h1><br><br>
+<input type=button name=btn value="using literals" onclick="method1()"><br><br>
+<input type=button name=btn value="using ufer-defined function" onclick="method2()"><br><br>
+<input type=button name=btn value="using object creation" onclick="ramya()"><br><br>
+</form>
+<script>
+
+function method1()
+{
+var x=document.getElementById('a').value;
+var y=document.getElementById('b').value;
+var z=document.getElementById('t').value;
+r1=parseInt(x,10);
+g1=parseInt(y,10);
+b1=parseInt(z,10);
+var Color={
+r1:r1,
+g1:g1,
+b1:b1,
+hexvalue:function(r1,g1,b1)
+{
+    return ('#' +this.r1.toString(16) + this.g1.toString(16) + this.b1.toString(16)).toUpperCase();
+  }
+}
+document.getElementById("hex").innerHTML=Color.hexvalue();
+//document.body.style.backgroundColor ="Color.hexvalue()";
+}
+function method2()
+{
+var x=document.getElementById('a').value;
+var y=document.getElementById('b').value;
+var z=document.getElementById('t').value;
+r1=parseInt(x,10);
+g1=parseInt(y,10);
+b1=parseInt(z,10);
+var obj1={r1:r1};
+var color=Object.create(obj1,{g1:{value:g1},b1:{value:b1}});
+function result()
+{
+return("#"+color.r1.toString(16)+color.g1.toString(16)+color.b1.toString(16)).toUpperCase();
+}
+document.getElementById("hex").innerHTML=result();
+}
+function ramya()
+{
+var x=document.getElementById('a').value;
+var y=document.getElementById('b').value;
+var z=document.getElementById('t').value;
+r1=parseInt(x,10);
+g1=parseInt(y,10);
+b1=parseInt(z,10);
+r1=r1;
+g1=g1;
+b1=b1;
+myColor = new Color(r1,g1,b1);
+function Color(r,g,b)
+{
+  this.Red = r;
+  this.Green = g;
+  this.Blue = b;
+
+this.toHex=function()
+  {
+    var rStr = this.Red.toString(16);
+    var gStr = this.Green.toString(16);
+    var bStr = this.Blue.toString(16);
+   return ('#' + rStr + gStr + bStr).toUpperCase();
+  }
+}
+document.getElementById("hex").innerHTML=myColor.toHex();
+}
+
+</script>
+<h1>hex value is:</h1>
+<h2 id="hex" style={color:orange}></h2>
+</body>
+</html>

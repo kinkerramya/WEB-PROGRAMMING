@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{background-color:pink;
+font-size:15px}
+</style>
+
+<script>
+function answer(){
+var studentlist=new Array(4);
+studentlist[0]=details("ramya","kinkiri","w1",22);
+studentlist[1]=details("keerthi","rushika","w2",22);
+studentlist[2]=details("shanti","vinith","w3",23);
+studentlist[3]=details("sudha","prasad","w4",22);
+function details(fname,lname,id,age)
+{
+return("FIRSTNAME : "+fname+";"+"LASTNAME:"+lname+" ;"+" ID:"+id+" ;"+"AGE:"+age+"<br>"+"<br>");
+}
+document.getElementById("d").innerHTML=studentlist[0]+studentlist[1]+studentlist[2]+studentlist[3];
+//function for(i=0;i<10;i++){studentlist[i]};
+}
+</script>
+</head>
+<body>
+<h1>students details</h1>
+
+<div style={color:red}>
+<input type="button" onclick="answer()" value="click here!">
+</div>
+<b><p id="d" style{color:brown}></p></b>
+</body>
+</html>

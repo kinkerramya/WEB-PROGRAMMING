@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+//Used append() to create table and display the table primarily
+$(document).ready(function(){
+$("input").focus(function(){
+        $(this).css("background-color", "#f0f8ff");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#f0e68c");
+    });
+$("#btn1").click(function(){                         //function for creating a table
+$("#p").text(function(){
+var i=$("#rows").val();
+var j=$("#cols").val();
+            return "you have choosen " +  i + " rows and "+ j +" columns";
+        });
+$("#Y").text(function(){
+return "ENTER YOUR DATA";
+});
+var a=$("#create");
+$(a).html("");
+var b=$("#display");
+$(b).html("");
+var body = $("body")[0];
+var html=$('<table></table>');
+var tblBody = $('<tbody></tbody>');
+for(i=0;i<$("#rows").val();i++)
+{
+var row = $('<tr></tr>');
+for(j=0;j<$("#cols").val();j++)
+{
+var col = $('<td id="f"></td>');
+$(col).html("<input type='text'style='width:100%'" + "id=inp_val[" + i + "][" + j + "]>");
+$(col).toggleClass('blink');
+$(row).append(col);
+}
+$(tblBody).append(row);
+}
+$(html).append(tblBody);
+var button=$('<button id="btn2" style="display:inline-block">display data</button>');
+$(html).append(button);
+$("#create").append(html);
+$("input").focus(function(){                                              // function for reading the user input table data
+        $(this).css("background-color", "#fff0f5");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#f0e68c");
+    });
+
+
+$("#btn2").click(function(){                                           //function for displaying the data table
+var tabs1 = $('#display');
+$(tabs1).html("");
+$("#n").text(function(){
+return "Here is your table data :";
+});
+var body1 = $("body")[0];
+var $inputs = $('#create :input');
+var values = {};
+    $inputs.each(function() {
+        values[this.id] = $(this).val();
+    });
+var htmlb=$('<table></table>');
+var tblbody = $('<tbody></tbody>');
+for(i=0;i<$("#rows").val();i++)
+{
+ var row = $('<tr id="m"></tr>');
+for(j=0;j<$("#cols").val();j++)
+{
+var col = $('<td id="l"></td>');
+$(col).html(values['inp_val['+i+']['+j+']']);
+$(col).attr("width","173px");
+ $(col).css("border", "solid red 2px");
+$(col).css("color:yellow");
+      
+ $(row).append(col);
+}
+$(tblbody).append(row);
+}
+$(htmlb).append(tblbody);
+$("#display").append(htmlb);
+});
+});
+});
+
+</script>
+<style>
+body{background-color:thistle;
+}
+#h{
+float:left;
+}
+#j{
+float:right;
+}
+#container{
+text-align:center;
+}
+#f{background-color:yellow;}
+.r{
+display:inline-block;
+}
+#btn2{
+display:inline-block;
+}
+#p{
+color:crimson;
+font-size:20px;}
+#n{
+color:green;
+font-size:20px;}
+#container{
+    border: 2px solid;
+    border-radius: 25px;
+} 
+#l{
+background-color:#fafad2;
+}
+
+	
+</style>
+</head>
+<body>
+<p><img id="h" src="smiley1.jpg" width="200px" height="200px"></p>
+<p><img id="j" src="smiley2.jpg" width="200px" height="200px"></p>
+
+<div id="container">
+
+<h1 style="color:blue" class="d"><b>CREATE A DROP DOWN TABLE USIND JQUERY</b></h1>
+</b>Number of Rows:</b> 
+<select name="Row" id="rows">
+<option value="1">One</option>
+<option value="2">Two</option>
+<option value="3">Three</option>
+<option value="4">Four</option>
+<option value="5" selected>Five</option>
+</select>
+<br><br>
+</b>Number of columns:</b>
+<select name="Column" id="cols">
+<option value="1">One</option>
+<option value="2">Two</option>
+<option value="3">Three</option>
+<option value="4" selected>Four</option>
+</select>
+<br><br>
+
+<button id="btn1">create table</button><br><br>
+<b><p id="p" class="d"></p></b>
+<b><p id="Y" class="d"></p></b>
+<div id="create" class="r"></div><br><br>
+<marquee><b><p id="n" class="d"></p></b></marquee><br>
+<div id="display" class="r"></div><br><br>
+</div>
+</body>
+</html>
